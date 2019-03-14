@@ -38,7 +38,7 @@ class Authentication {
 
     private function login()
     {
-        if (Utilities::hasValue($_GET, 'code') && Utilities::hasValue($_GET, 'state')
+        if ((new Utilities())->hasValue($_GET, 'code') && (new Utilities())->hasValue($_GET, 'state')
             && $_SESSION[self::REDIRECTED]) {
             $_SESSION[self::REDIRECTED] = false;
             $_SESSION[self::TOKEN] = $this->returnFromGithub($_GET['code']);

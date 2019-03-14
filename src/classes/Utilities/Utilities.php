@@ -22,12 +22,12 @@ class Utilities
         return $value;
 	}
 
-	public static function hasValue($array, $key)
+	public function hasValue($array, $key)
     {
         return \is_array($array) && isset($array[$key]);
 	}
 
-	public static function dump($data)
+	public function dump($data)
     {
 		echo '<pre>';
 		var_dump($data);

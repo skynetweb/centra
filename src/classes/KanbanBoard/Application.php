@@ -60,12 +60,12 @@ class Application {
         return $return;
 	}
 
-	private static function checkState($issue): string
+	private function checkState($issue): string
 	{
 	   if($issue['state'] === 'closed') {
            return self::COMPLETED;
        }
-       else if(Utilities::hasValue($issue, self::ASSIGNEE) && \count($issue[self::ASSIGNEE]) > 0)
+       else if((new Utilities())->hasValue($issue, self::ASSIGNEE) && \count($issue[self::ASSIGNEE]) > 0)
        {
             $state = 'active';
        } else {
@@ -75,10 +75,10 @@ class Application {
         return $state;
 	}
 
-	private static function labelsMatch($issue, $needles)
+	private function labelsMatch($issue, $needles)
 	{
 	    $return = [];
-        if(Utilities::hasValue($issue, 'labels')) {
+        if((new Utilities())->hasValue($issue, 'labels')) {
             foreach ($issue['labels'] as $label) {
                 if (\in_array($label['name'], $needles)) {
                     $return = [$label['name']];
